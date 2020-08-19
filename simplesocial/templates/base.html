@@ -17,24 +17,29 @@
     <link rel="stylesheet" href="{% static 'simplesocial/css/master.css'%}">
     </head>
     <body>
-        <nav class="navbar mynav" role="navigation" id="'navbar" >
-            <div class="container">
-                <a class="navbar-brand mynav" href="{% url 'home' %}">Social</a>
-                <ul class="nav navbar-nav navbar-right">
-                    {% if user.is_authenticated %}
+
+        <nav class="navbar navbar-expand-lg bg-dark mynav" role="navigation" id="navbar">
+      <div class="container">
+        <div class="navbar-nav align-items-center">
+          <a class="navbar-brand mynav" href="{% url 'home' %}">Star Social</a>
+        </div>
+        <div class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
                     <li><a href="#">Post</a></li>
                     <li><a href="#">Groups</a></li>
                     <li><a href="#">Create Group</a></li>
-                    <li><a href="href="{% url 'accounts:logout' %}">Log out</a></li>
-                    {% else %}
+                    <li><a href="{% url 'accounts:logout' %}">Log out</a></li>
+          {% else %}
                     <li><a href="#">Groups</a></li>
                     <li><a href="{% url 'accounts:login' %}">Log in</a></li>
                     <li><a href="{% url 'accounts:signup' %}">Sign up</a></li>
-                     {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </nav>
 
-                </ul>
-            </div>
-        </nav>
+
+
 
         <div class="container mycontent">
             {% block content %}
